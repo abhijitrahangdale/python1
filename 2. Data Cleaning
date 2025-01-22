@@ -1,0 +1,36 @@
+df_bookings.describe()
+
+(1) Clean invalid guests
+f_bookings[df_bookings.no_guests<=0]
+
+df_bookings = df_bookings[df_bookings.no_guests>0]
+df_bookings.shape
+
+(2) Outlier removal in revenue generated
+df_bookings.revenue_generated.min(), df_bookings.revenue_generated.max()
+
+df_bookings.revenue_generated.mean(), df_bookings.revenue_generated.median()
+
+avg, std = df_bookings.revenue_generated.mean(), df_bookings.revenue_generated.std()
+
+higher_limit = avg + 3*std
+higher_limit
+
+df_bookings[df_bookings.revenue_generated<=0]
+
+df_bookings = df_bookings[df_bookings.revenue_generated<=higher_limit]
+df_bookings.shape
+
+df_bookings.revenue_realized.describe()
+
+higher_limit = df_bookings.revenue_realized.mean() + 3*df_bookings.revenue_realized.std()
+higher_limit
+
+df_bookings[df_bookings.revenue_realized>higher_limit]
+
+df_bookings[df_bookings.room_category=="RT4"].revenue_realized.describe()
+
+* mean + 3*standard deviation
+23439+3*9048
+
+df_bookings[df_bookings.booking_id=="May012216558RT213"]
