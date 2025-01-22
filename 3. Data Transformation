@@ -1,0 +1,16 @@
+Create occupancy percentage column
+df_agg_bookings.head(3)
+
+df_agg_bookings['occ_pct'] = df_agg_bookings.apply(lambda row: row['successful_bookings']/row['capacity'], axis=1)
+
+new_col = df_agg_bookings.apply(lambda row: row['successful_bookings']/row['capacity'], axis=1)
+df_agg_bookings = df_agg_bookings.assign(occ_pct=new_col.values)
+df_agg_bookings.head(3)
+
+df_agg_bookings['occ_pct'] = df_agg_bookings['occ_pct'].apply(lambda x: round(x*100, 2))
+df_agg_bookings.head(3)
+
+df_bookings.head()
+
+df_agg_bookings.info()
+
