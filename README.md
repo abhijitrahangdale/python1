@@ -13,8 +13,8 @@ predidential etc
   Those data goes on AtliQ Grand DabeBase.
 
 ** Data Analytic Project Steps:-
-!. Understand Bussiness Problem.
-2. Data Collection.
+!. Understand Bussiness Problem
+2. Data Collection
 3. Data Cleaning and Exploration 
 4. Data Trasnformation
-5. Collect Insights.
+5. Collect Insights
