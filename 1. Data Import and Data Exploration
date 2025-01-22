@@ -1,0 +1,36 @@
+1.Read bookings data in a datagrame
+df_bookings = pd.read_csv('datasets/fact_bookings.csv')
+
+2.Explore bookings data
+df_bookings.head()
+
+df_bookings.shape
+
+df_bookings.room_category.unique()
+
+df_bookings.booking_platform.unique()
+
+df_bookings.booking_platform.value_counts()
+
+df_bookings.booking_platform.value_counts().plot(kind="bar")
+
+df_bookings.describe()
+
+#Read rest of the files
+df_date = pd.read_csv('datasets/dim_date.csv')
+df_hotels = pd.read_csv('datasets/dim_hotels.csv')
+df_rooms = pd.read_csv('datasets/dim_rooms.csv')
+df_agg_bookings = pd.read_csv('datasets/fact_aggregated_bookings.csv')
+
+df_hotels.shape
+
+df_hotels.head(3)
+
+df_hotels.category.value_counts()
+
+* Create a Bar Chart
+df_hotels.city.value_counts().plot(kind="bar")
+
+
+
+
