@@ -1,0 +1,90 @@
+1. What is an average occupancy rate in each of the room categories?
+df_agg_bookings.head(3)
+
+df_agg_bookings.groupby("room_category")["occ_pct"].mean()
+
+df = pd.merge(df_agg_bookings, df_rooms, left_on="room_category", right_on="room_id")
+df.head(4)
+
+df.drop("room_id",axis=1, inplace=True)
+df.head(4)
+
+df.groupby("room_class")["occ_pct"].mean()
+
+df[df.room_class=="Standard"].occ_pct.mean()
+
+2. Print average occupancy rate per city
+df_hotels.head(3)
+
+df = pd.merge(df, df_hotels, on="property_id")
+df.head(3)
+
+df.groupby("city")["occ_pct"].mean()
+
+3. When was the occupancy better? Weekday or Weekend?
+df_date.head(3)
+
+df = pd.merge(df, df_date, left_on="check_in_date", right_on="date")
+df.head(3)
+
+df.groupby("day_type")["occ_pct"].mean().round(7)
+
+4: In the month of June, what is the occupancy for different cities
+df_june_22 = df[df["mmm yy"]=="Jun 22"]
+df_june_22.head(7)
+
+df_june_22.groupby('city')['occ_pct'].mean().round(2).sort_values(ascending=False)
+**create Bar chart
+df_june_22.groupby('city')['occ_pct'].mean().round(2).sort_values(ascending=False).plot(kind="bar")
+
+5: We got new data for the month of august. Append that to existing data
+df_august = pd.read_csv("datasets/new_data_august.csv")
+df_august.head(7)
+
+df_august.columns
+
+df.columns
+
+df_august.shape
+
+df.shape
+
+latest_df = pd.concat([df, df_august], ignore_index = True, axis = 0)
+latest_df.tail(7)
+
+latest_df.shape
+
+6. Print revenue realized per city
+df_bookings.head()
+
+df_hotels.head(7)
+
+df_bookings_all = pd.merge(df_bookings, df_hotels, on="property_id")
+df_bookings_all.head(7)
+
+df_bookings_all.groupby("city")["revenue_realized"].sum()
+
+7. Print month by month revenue
+df_date.head(3)
+df_date["mmm yy"].unique()
+
+df_bookings_all.head(7)
+
+df_date.info()
+
+df_date["date"] = pd.to_datetime(df_date["date"])
+df_date.head(3)
+
+df_bookings_all.info()
+
+df_bookings_all["check_in_date"] = pd.to_datetime(df_bookings_all["check_in_date"])
+df_bookings_all.head(7)
+
+df_bookings_all = pd.merge(df_bookings_all, df_date, left_on="check_in_date", right_on="date")
+df_bookings_all.head(7)
+
+df_bookings_all.groupby("mmm yy")["revenue_realized"].sum()
+
+
+
+
