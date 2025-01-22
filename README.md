@@ -12,7 +12,7 @@ predidential etc
       some books their room by AtliQ Grand websites. some person books their hotels by third party websites.
   Those data goes on AtliQ Grand DabeBase.
 
-# Data Analytic Project Steps:-
+** Data Analytic Project Steps:-
 !. Understand Bussiness Problem.
 2. Data Collection.
 3. Data Cleaning and Exploration 
